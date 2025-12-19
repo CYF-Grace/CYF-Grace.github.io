@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Yifei Chen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>Yifei Chen</strong><span>Portfolio</span>
+          </div>
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="experience.html">Experience</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="resume.html">Resume</a>
+          <a class="active" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">Get in touch</div>
+        <h1>Contact</h1>
+        <p>Reach me by email or phone. Links below.</p>
+      </section>
+
+      <section class="grid">
+        <div class="card span6">
+          <h2>Email</h2>
+          <ul class="list">
+            <li><a href="mailto:yic152@ucsd.edu">yic152@ucsd.edu</a></li>
+            <li><a href="mailto:yifeichen388@gmail.com">yifeichen388@gmail.com</a></li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <h2>Phone</h2>
+          <ul class="list">
+            <li><a href="tel:+18583964937">+1 858 396 4937</a></li>
+            <li><a href="tel:+8613522838825">+86 135 2283 8825</a></li>
+          </ul>
+        </div>
+
+        <div class="card span12">
+          <h2>Links</h2>
+          <div class="smalllinks">
+            <a href="https://github.com/CYF-Grace">GitHub: CYF-Grace</a>
+            <span class="muted"> · </span>
+            <a href="https://www.linkedin.com/in/Yifei-Chen-Grace">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">© <span id="year"></span> Yifei Chen</div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume — Yifei Chen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>Yifei Chen</strong><span>Portfolio</span>
+          </div>
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="experience.html">Experience</a>
+          <a href="gallery.html">Gallery</a>
+          <a class="active" href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">Resume</div>
+        <h1>Download</h1>
+        <div class="actions">
+          <a class="btn primary" href="resume.pdf">Download Resume (PDF) →</a>
+        </div>
+      </section>
+
+      <div class="footer">© <span id="year"></span> Yifei Chen</div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

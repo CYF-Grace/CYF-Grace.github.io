@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yifei Chen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>Yifei Chen</strong><span>Portfolio</span>
+          </div>
+        </a>
+        <div class="links">
+          <a class="active" href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="experience.html">Experience</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">Data Science • UC San Diego</div>
+        <h1>Building clean, practical things.</h1>
+        <p>
+          I’m a Data Science major focused on building reliable, usable systems—from data analysis and modeling to
+          end-to-end apps. I’m also interested in mechanical engineering, which is why I’ve taken on hands-on
+          engineering projects and teams.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="projects.html">View Projects →</a>
+          <a class="btn" href="resume.html">Resume</a>
+          <a class="btn" href="contact.html">Contact</a>
+        </div>
+      </section>
+
+      <div class="kicker">Highlights</div>
+
+      <section class="grid">
+        <div class="card span6">
+          <h2>Current focus</h2>
+          <p>
+            Data science workflows (cleaning, EDA, modeling, evaluation) and building data-driven web tools.
+            I also prototype hardware systems (ESP32/Arduino/Raspberry Pi) for applied sensing and data collection.
+          </p>
+        </div>
+
+        <div class="card span6">
+          <h2>What I like building</h2>
+          <p>Data • visualization • modeling • web tools • (plus) hardware/mechanical builds</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Visualization</span>
+            <span class="tag">Modeling</span>
+            <span class="tag">React</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">CAD</span>
+          </div>
+        </div>
+
+        <div class="card span4">
+          <h2>Projects</h2>
+          <p>Selected work with short summaries and links.</p>
+          <hr class="sep" />
+          <div class="smalllinks"><a href="projects.html">Go to Projects</a></div>
+        </div>
+
+        <div class="card span4">
+          <h2>Experience</h2>
+          <p>Roles and teams—what I did and delivered.</p>
+          <hr class="sep" />
+          <div class="smalllinks"><a href="experience.html">Go to Experience</a></div>
+        </div>
+
+        <div class="card span4">
+          <h2>Contact</h2>
+          <p>Email + GitHub + LinkedIn in one place.</p>
+          <hr class="sep" />
+          <div class="smalllinks"><a href="contact.html">Go to Contact</a></div>
+        </div>
+      </section>
+
+      <div class="footer">© <span id="year"></span> Yifei Chen</div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

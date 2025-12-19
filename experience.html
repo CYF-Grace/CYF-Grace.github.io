@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Experience — Yifei Chen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>Yifei Chen</strong><span>Portfolio</span>
+          </div>
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" href="experience.html">Experience</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">Work • Research • Teams</div>
+        <h1>Experience</h1>
+        <p>Concrete roles and what I built/delivered.</p>
+      </section>
+
+      <div class="kicker">Work experience</div>
+
+      <section class="grid">
+        <div class="card span12">
+          <h2>HDSI Lab Fellow — UC San Diego</h2>
+          <ul class="list">
+            <li>Developed hardware prototypes with Arduino and Raspberry Pi, integrating sensors to support research projects.</li>
+            <li>Designed and fabricated custom components using CAD modeling and 3D printing for device assemblies.</li>
+            <li>Implemented microcontroller programming, circuit setup, and system testing for reliable data capture and device performance.</li>
+          </ul>
+        </div>
+
+        <div class="card span12">
+          <h2>Intern — Zhongdiantongtu Technology., LTD (Wuhan, China)</h2>
+          <p class="muted">Worked under Mr. Lei Cheng (CTO)</p>
+          <ul class="list">
+            <li>Joined a digital twin technology team in transportation; assisted with gathering data to create computer simulations to predict potential accidents.</li>
+            <li>Conducted a literature review of 10+ related papers.</li>
+            <li>Used “EarthMaker” to simulate tunnel traffic flow, signage, and air circulation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="kicker">Research experience</div>
+
+      <section class="grid">
+        <div class="card span12">
+          <h2>Research on x-y plotter — Princeton University (Prof. Michael Littman)</h2>
+          <ul class="list">
+            <li>Researched and designed an x-y plotter; reviewed existing designs (Makeblock, DIY stepper-motor plotters).</li>
+            <li>Modeled the design using LeoCAD; built using LEGO Technic with servo and stepper motors; programmed with Arduino IDE.</li>
+            <li>Read 15+ related papers and wrote a 15-page paper.</li>
+            <li>Tested the plotter; successfully wrote sentences and plotted computer data.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="kicker">Teams</div>
+
+      <section class="grid">
+        <div class="card span6">
+          <h2>Mechanical Subteam Member — TritonBots RoboCup SSL</h2>
+          <ul class="list">
+            <li>Designed and prototyped robotic mechanisms such as a dribbler damping system.</li>
+            <li>CAD modeling, material selection, and iteration based on testing feedback.</li>
+            <li>Collaborated with electrical/software subteams for integration.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <h2>Mechanical Engineer — VEX Robotics Team</h2>
+          <ul class="list">
+            <li>Designed drivetrain, intake, and lift mechanisms under strict constraints.</li>
+            <li>CAD-based modeling/optimization; iterated using testing feedback.</li>
+            <li>Contributed to strategy and documentation for regional competitions.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="footer">© <span id="year"></span> Yifei Chen</div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
