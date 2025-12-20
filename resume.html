@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume — Yifei Chen</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
   <body>
     <div class="topbar">
@@ -30,17 +31,190 @@
     <main class="container">
       <section class="hero">
         <div class="eyebrow">Resume</div>
-        <h1>Download</h1>
+        <h1>Yifei Chen</h1>
+        <p>
+          Email: <a href="mailto:yifeichen388@gmail.com">yifeichen388@gmail.com</a> •
+          <a href="mailto:yic152@ucsd.edu">yic152@ucsd.edu</a>
+          <br />
+          Tel: <a href="tel:+18583964937">+1 858 396 4937</a> •
+          <a href="tel:+8613522838825">+86 135 2283 8825</a>
+        </p>
         <div class="actions">
-          <a class="btn primary" href="resume.pdf">Download Resume (PDF) →</a>
+          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Open PDF →</a>
+          <a class="btn" href="resume.pdf" download>Download PDF</a>
+        </div>
+      </section>
+
+      <div class="kicker">Preview</div>
+      <section class="resume-view">
+        <iframe title="Yifei Chen Resume" src="resume.pdf#view=FitH" loading="lazy"></iframe>
+      </section>
+
+      <div class="kicker">Text version</div>
+
+      <!-- Education (title outside cards) -->
+      <div class="kicker">Education</div>
+      <section class="grid">
+        <div class="card span12">
+          <ul class="list">
+            <li>The Branch of the High School Affiliated to Renmin University of China (Sep 2018 – Jul 2021)</li>
+            <li>The Experimental High School Attached to Beijing Normal University (Sep 2021 – Jul 2024)</li>
+            <li>University of California, San Diego (Sep 2024 – Present)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Work Experience (title outside cards) -->
+      <div class="kicker">Work Experience</div>
+      <section class="grid">
+        <div class="card span6">
+          <p><strong>HDSI Lab Fellow</strong>, UC San Diego</p>
+          <ul class="list">
+            <li>Developed hardware prototypes with Arduino and Raspberry Pi; integrated sensors to support research projects.</li>
+            <li>Designed and fabricated custom components with CAD modeling and 3D printing for device assemblies.</li>
+            <li>Implemented microcontroller programming, circuit setup, and system testing for reliable data capture.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Intern</strong>, Zhongdiantongtu Technology., LTD — Wuhan, China</p>
+          <ul class="list">
+            <li>Assisted a transportation digital-twin team with data gathering for simulations predicting potential accidents.</li>
+            <li>Conducted a literature review of 10+ related papers.</li>
+            <li>Used “EarthMaker” to simulate tunnel traffic flow, signage, and air circulation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Research Experience (title outside cards) -->
+      <div class="kicker">Research Experience</div>
+      <section class="grid">
+        <div class="card span12">
+          <p><strong>Research on X–Y Plotter</strong> (Advisor: Prof. Michael Littman, Princeton University)</p>
+          <ul class="list">
+            <li>Designed and built an x–y plotter; benchmarked commercial and DIY designs (Makeblock, stepper-motor plotters).</li>
+            <li>Modeled in LeoCAD; built with LEGO Technic plus servo/stepper motors; programmed with Arduino IDE.</li>
+            <li>Read 15+ related papers; tested successfully for writing sentences and plotting computer data.</li>
+            <li>Wrote a 15-page paper documenting design decisions, testing, and results.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Project Experience (title outside cards + ONLY section that rolls) -->
+      <div class="kicker">Project Experience</div>
+      <section class="grid resume-roll" data-roll="project-experience">
+        <div class="card span6">
+          <p><strong>DS3 Project: Geisel Library Occupancy Tracker</strong></p>
+          <ul class="list">
+            <li>Built a real-time IoT occupancy tracker with ESP32 Bluetooth-scanning sensors and Firebase Realtime Database.</li>
+            <li>Developed a React website that auto-updates via live database listeners; deployed on Vercel.</li>
+            <li>Created realistic, floor-plan-based visualizations to show occupancy by floor and improve interpretability.</li>
+            <li>Collaborated in a four-person team across hardware setup, data structure design, and system integration.</li>
+            <li>Project won second place in Dino Cage.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Mechanical Subteam Member</strong>, TritonBots RoboCup SSL Team</p>
+          <ul class="list">
+            <li>Designed and prototyped robotic mechanisms (e.g., dribbler damping system).</li>
+            <li>Performed CAD modeling, material selection, and iterative refinement based on testing feedback.</li>
+            <li>Collaborated with electrical and software subteams for integration into full robot assemblies.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Multimedia Processing and Classification System</strong></p>
+          <ul class="list">
+            <li>Built Python image/audio processing framework (filters, edge detection, pixelation, clipping, reverb; audio transforms).</li>
+            <li>Implemented tiered processing classes with cost-tracking and coupon-based systems.</li>
+            <li>Built a KNN classifier with voting, distance metrics, and labeled tests for image classification.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Analysis on Music Popularity (TikTok + Spotify)</strong></p>
+          <ul class="list">
+            <li>Cleaned/standardized large datasets and performed EDA + visualization (histograms, bar plots, scatterplots).</li>
+            <li>Developed linear regression model (MSE, R²) and an A/B testing framework to test feature effects.</li>
+            <li>Discussed ethical considerations: dataset bias, algorithm limitations, and transparency.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Taylor Swift Music Data Analysis</strong></p>
+          <ul class="list">
+            <li>Cleaned and analyzed 200+ songs; visualized trends in features and popularity.</li>
+            <li>Built lyric-similarity recommendations + keyword lyric search + a keyword cloud generator (Lover album).</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Friends TV Show Data Analysis</strong></p>
+          <ul class="list">
+            <li>Explored trends in dialogue gender balance, viewership, and emotion via data visualization.</li>
+            <li>Compared directors/writers; computed contributions; identified best directors across episodes.</li>
+            <li>Applied script + sentiment analysis; generated new episode titles using historical patterns.</li>
+            <li>Used statistical analysis to explore correlations between ratings, emotions, and episode success.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Team Program Developer</strong>, International Space Settlement Design Competition (ISSDC)</p>
+          <ul class="list">
+            <li>Led 3D modeling across Human Factor, Automation, and Operation departments.</li>
+            <li>Coordinated cross-country collaboration on design constraints and subsystem layouts.</li>
+            <li>Presented to ISSDC committee; won International Finals; 3D-printed main model for exhibitions.</li>
+          </ul>
+        </div>
+
+        <div class="card span6">
+          <p><strong>Mechanical Engineer</strong>, VEX Robotics Team</p>
+          <ul class="list">
+            <li>Designed/assembled drivetrain, intake, and lift mechanisms under strict constraints.</li>
+            <li>Used CAD for part optimization; incorporated test feedback to improve performance.</li>
+            <li>Contributed to competition strategy and documentation for reliable builds.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Leadership (title outside cards) -->
+      <div class="kicker">Leadership</div>
+      <section class="grid">
+        <div class="card span12">
+          <p><strong>Founder</strong>, Bibliolater Club — Beijing</p>
+          <ul class="list">
+            <li>Built a 40+ member reading club across multiple Beijing schools.</li>
+            <li>Organized 120+ online meetings; read/discussed 40 books; facilitated idea-sharing and discussion.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Additional Skills (title outside cards) -->
+      <div class="kicker">Additional Skills</div>
+      <section class="grid">
+        <div class="card span12">
+          <div class="tags">
+            <span class="tag">Mandarin</span>
+            <span class="tag">English</span>
+            <span class="tag">Spanish</span>
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">SolidWorks</span>
+            <span class="tag">CAD</span>
+            <span class="tag">Blender</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Carpentry</span>
+            <span class="tag">Soldering</span>
+            <span class="tag">MS Office</span>
+          </div>
         </div>
       </section>
 
       <div class="footer">© <span id="year"></span> Yifei Chen</div>
     </main>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>
