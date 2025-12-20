@@ -64,10 +64,10 @@
     particles.push({
       x: rand(0, w),
       y: rand(0, h),
-      r: rand(0.8, 2.0),
+      r: rand(1.3, 2.8),
       vx: rand(-0.18, 0.18),
       vy: rand(-0.14, 0.14),
-      a: rand(0.12, 0.40),
+      a: rand(0.22, 0.55),
     });
   }
 
@@ -95,18 +95,18 @@
       ctx.fill();
     }
 
-    const maxDist = 140;
+    const maxDist = 170;
     for (const p of particles) {
       const dx = p.x - mouseX;
       const dy = p.y - mouseY;
       const dist = Math.hypot(dx, dy);
       if (dist < maxDist) {
-        ctx.globalAlpha = (1 - dist / maxDist) * 0.14;
+        ctx.globalAlpha = (1 - dist / maxDist) * 0.34;
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(mouseX, mouseY);
         ctx.strokeStyle = "rgba(255,255,255,1)";
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1.6;
         ctx.stroke();
       }
     }
