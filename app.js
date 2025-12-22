@@ -41,7 +41,9 @@
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext("2d", { alpha: true });
-  let w = 0, h = 0, dpr = 1;
+  let w = 0,
+    h = 0,
+    dpr = 1;
 
   const resize = () => {
     dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
@@ -178,7 +180,7 @@
   document.querySelectorAll(".card").forEach((card) => attachInteractiveTilt(card, 6));
   document.querySelectorAll(".btn").forEach((btn) => attachInteractiveTilt(btn, 4));
 
-  // ===== Conveyors (JS-driven marquee) =====
+  // ===== Conveyors (JS-driven marquee + centered-card carousel for big belts) =====
   const marqueeList = [];
   let lastT = performance.now();
 
@@ -186,6 +188,14 @@
     if (m <= 0) return 0;
     x = x % m;
     return x < 0 ? x + m : x;
+  };
+
+  const wrapDelta = (from, to, loop) => {
+    if (loop <= 0) return to - from;
+    let d = (to - from) % loop;
+    if (d > loop / 2) d -= loop;
+    if (d < -loop / 2) d += loop;
+    return d;
   };
 
   const arrowSVG = (dir) => {
@@ -198,11 +208,7 @@
     if (!container || prefersReduced) return;
     if (container.dataset.conveyorReady === "1") return;
 
-    const {
-      durationSec = 30,   // unified slow speed
-      gap = 10,
-      withButtons = false
-    } = opts;
+    const { durationSec = 30, gap = 10, withButtons = false } = opts;
 
     const items = Array.from(container.querySelectorAll(itemSelector));
     if (items.length < 2) return;
@@ -211,13 +217,24 @@
     track.className = "conveyor-track";
     track.style.setProperty("--gap", `${gap}px`);
 
-    items.forEach((it) => track.appendChild(it));
+    // For big-card belts: wrap each card in a scaling container so card tilt transform stays intact.
+    if (withButtons) {
+      items.forEach((it) => {
+        const wrap = document.createElement("div");
+        wrap.className = "conveyor-item";
+        wrap.appendChild(it);
+        track.appendChild(wrap);
+      });
+    } else {
+      items.forEach((it) => track.appendChild(it));
+    }
 
     container.classList.add("conveyor");
     container.textContent = "";
     container.appendChild(track);
 
-    let btnL = null, btnR = null;
+    let btnL = null,
+      btnR = null;
 
     if (withButtons) {
       btnL = document.createElement("button");
@@ -270,6 +287,7 @@
         existing.loop = loop;
         existing.speed = speed;
         existing.x = clampMod(existing.x, loop);
+        existing.needsFocus = true;
       } else {
         marqueeList.push({
           container,
@@ -278,8 +296,12 @@
           speed,
           x: 0,
           paused: false,
-          holdDir: 0, // only used when buttons exist
-          hasButtons: !!withButtons
+          holdDir: 0,
+          hasButtons: !!withButtons,
+          snapActive: false,
+          snapTarget: 0,
+          needsFocus: true,
+          centerEl: null,
         });
       }
     };
@@ -287,43 +309,114 @@
     rebuild();
     window.addEventListener("resize", rebuild, { passive: true });
 
-    // Pause on hover
-    container.addEventListener("mouseenter", () => {
-      const m = marqueeList.find((mm) => mm.container === container);
-      if (m) m.paused = true;
-      container.classList.add("paused");
-    }, { passive: true });
+    const getCentered = (m) => {
+      const cw = m.container.getBoundingClientRect().width;
+      const cc = cw / 2;
 
-    container.addEventListener("mouseleave", () => {
-      const m = marqueeList.find((mm) => mm.container === container);
-      if (m) {
-        m.paused = false;
-        m.holdDir = 0;
+      const children = Array.from(m.track.children);
+      let best = null;
+      let bestDist = Infinity;
+
+      for (const el of children) {
+        const c = el.offsetLeft + el.getBoundingClientRect().width / 2;
+        const screenC = c - m.x;
+        const d = Math.abs(screenC - cc);
+        if (d < bestDist) {
+          bestDist = d;
+          best = el;
+        }
       }
-      container.classList.remove("paused");
-    }, { passive: true });
+      return best;
+    };
 
-    // Buttons: only for big-card belts
+    const snapToEl = (m, el) => {
+      if (!m || !el || m.loop <= 0) return;
+
+      const cw = m.container.getBoundingClientRect().width;
+      const cc = cw / 2;
+
+      const w = el.getBoundingClientRect().width;
+      const elCenter = el.offsetLeft + w / 2;
+
+      const target = clampMod(elCenter - cc, m.loop);
+
+      m.snapTarget = target;
+      m.snapActive = true;
+
+      // Snap should be readable, so pause during snap.
+      m.paused = true;
+      m.container.classList.add("paused");
+    };
+
+    // Pause on hover
+    container.addEventListener(
+      "mouseenter",
+      () => {
+        const m = marqueeList.find((mm) => mm.container === container);
+        if (!m) return;
+
+        // Stop motion immediately on hover
+        m.paused = true;
+        m.holdDir = 0;
+        container.classList.add("paused");
+
+        // For card belts, ensure a real card is centered on hover:
+        // snap the closest item to the exact center so the "center" is never empty.
+        if (m.hasButtons) {
+          const closest = getCentered(m);
+          if (closest) snapToEl(m, closest);
+          else m.needsFocus = true;
+        }
+      },
+      { passive: true }
+    );
+
+    container.addEventListener(
+      "mouseleave",
+      () => {
+        const m = marqueeList.find((mm) => mm.container === container);
+        if (m) {
+          m.paused = false;
+          m.holdDir = 0;
+        }
+        container.classList.remove("paused");
+      },
+      { passive: true }
+    );
+
+    // Buttons: centered-card stepping
     if (withButtons && btnL && btnR) {
       const getM = () => marqueeList.find((mm) => mm.container === container);
 
-      // Default motion is right->left (content moves left), which means x increases.
-      // Left button: scroll content left (same direction as default) => +x
-      // Right button: scroll content right => -x
-      const nudge = (dx) => {
+      const step = (dir) => {
         const m = getM();
         if (!m) return;
-        m.x = clampMod(m.x + dx, m.loop);
-        m.track.style.transform = `translateX(${-m.x}px)`;
+
+        const center = getCentered(m) || m.centerEl;
+        if (!center) return;
+
+        const next = dir < 0 ? center.previousElementSibling : center.nextElementSibling;
+        const el = next || (dir < 0 ? m.track.lastElementChild : m.track.firstElementChild);
+        if (!el) return;
+
+        snapToEl(m, el);
       };
 
-      btnL.addEventListener("click", (e) => { e.preventDefault(); nudge(+140); });
-      btnR.addEventListener("click", (e) => { e.preventDefault(); nudge(-140); });
+      btnL.addEventListener("click", (e) => {
+        e.preventDefault();
+        step(-1);
+      });
 
+      btnR.addEventListener("click", (e) => {
+        e.preventDefault();
+        step(+1);
+      });
+
+      // Optional: hold to scrub while hovered (kept from your previous behavior)
       const hold = (dir) => {
         const m = getM();
         if (!m) return;
-        m.holdDir = dir; // +1 means move left faster, -1 means move right
+        m.holdDir = dir;
       };
       const releaseHold = () => {
         const m = getM();
@@ -331,8 +424,14 @@
         m.holdDir = 0;
       };
 
-      btnL.addEventListener("pointerdown", (e) => { e.preventDefault(); hold(+1); });
-      btnR.addEventListener("pointerdown", (e) => { e.preventDefault(); hold(-1); });
+      btnL.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        hold(+1);
+      });
+      btnR.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        hold(-1);
+      });
 
       btnL.addEventListener("pointerup", releaseHold, { passive: true });
       btnR.addEventListener("pointerup", releaseHold, { passive: true });
@@ -343,6 +442,43 @@
     container.dataset.conveyorReady = "1";
   };
 
+  const updateCenteredFocus = (m) => {
+    if (!m || !m.hasButtons) return;
+
+    const cw = m.container.getBoundingClientRect().width;
+    if (!cw) return;
+
+    const cc = cw / 2;
+    const children = Array.from(m.track.children);
+
+    let best = null;
+    let bestDist = Infinity;
+
+    for (const el of children) {
+      const w = el.getBoundingClientRect().width;
+      const c = el.offsetLeft + w / 2;
+      const screenC = c - m.x;
+      const d = Math.abs(screenC - cc);
+
+      if (d < bestDist) {
+        bestDist = d;
+        best = el;
+      }
+
+      // Smooth falloff: near center bigger, sides smaller.
+      const falloff = Math.max(320, Math.min(620, cw * 0.55));
+      const focus = Math.max(0, 1 - d / falloff);
+      el.style.setProperty("--focus", focus.toFixed(3));
+      el.classList.remove("is-center");
+    }
+
+    if (best) {
+      best.classList.add("is-center");
+      best.style.setProperty("--focus", "1");
+      m.centerEl = best;
+    }
+  };
+
   // Single RAF loop for all conveyors
   const tickMarquee = (t) => {
     const dt = Math.min(0.05, (t - lastT) / 1000);
@@ -351,19 +487,48 @@
     for (const m of marqueeList) {
       if (m.loop <= 0) continue;
 
+      // Snap animation for big-card belts
+      if (m.hasButtons && m.snapActive) {
+        const d = wrapDelta(m.x, m.snapTarget, m.loop);
+        const k = 1 - Math.pow(0.0008, dt); // smooth, frame-rate independent
+        m.x = clampMod(m.x + d * k, m.loop);
+        m.track.style.transform = `translateX(${-m.x}px)`;
+
+        if (Math.abs(d) < 0.6) {
+          m.x = clampMod(m.snapTarget, m.loop);
+          m.track.style.transform = `translateX(${-m.x}px)`;
+          m.snapActive = false;
+
+          // If not hovering, resume rolling motion after snap.
+          if (!m.container.matches(":hover")) {
+            m.paused = false;
+            m.container.classList.remove("paused");
+          }
+        }
+
+        updateCenteredFocus(m);
+        continue;
+      }
+
       // Hover paused (but allow button-hold for big belts)
       if (m.paused) {
         if (m.hasButtons && m.holdDir !== 0) {
           const v = m.speed * 1.25 * m.holdDir;
           m.x = clampMod(m.x + v * dt, m.loop);
           m.track.style.transform = `translateX(${-m.x}px)`;
+          updateCenteredFocus(m);
+        } else if (m.needsFocus) {
+          updateCenteredFocus(m);
+          m.needsFocus = false;
         }
         continue;
       }
 
-      // Default: right -> left (content moves left) => x increases
-      m.x = clampMod(m.x + (m.speed * -1) * dt, m.loop);
+      // Default motion: gentle continuous roll
+      m.x = clampMod(m.x + m.speed * dt, m.loop);
       m.track.style.transform = `translateX(${-m.x}px)`;
+
+      updateCenteredFocus(m);
     }
 
     requestAnimationFrame(tickMarquee);
@@ -391,11 +556,10 @@
       // ✅ THRESHOLD: roll ONLY if there are MORE than 2 cards
       if (cards.length <= 2) return;
 
-      gridEl.classList.add("conveyor"); // for mask/overflow
+      gridEl.classList.add("conveyor");
       gridEl.classList.add("grid");
-      gridEl.classList.add("conveyor"); // ensures .grid.conveyor styling
       setupConveyor(gridEl, ".card", { durationSec: SPEED_SEC, gap: 14, withButtons: true });
-      gridEl.classList.add("conveyor"); // keep layout override .grid.conveyor
+      gridEl.classList.add("conveyor");
     });
   }
 

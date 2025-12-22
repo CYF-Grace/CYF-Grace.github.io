@@ -642,10 +642,32 @@ hr.sep{
 .grid.conveyor .conveyor-track{
   padding: 4px 2px 12px;
 }
-.grid.conveyor .card{
+
+/* Each card is wrapped by JS in .conveyor-item so the card can keep its tilt transform */
+.grid.conveyor .conveyor-item{
   flex: 0 0 auto;
   width: min(420px, 86vw);
   margin: 0;
+
+  /* Center-focus scaling (JS sets --focus 0..1) */
+  --focus: 0;
+  transform-origin: center;
+  transform: scale(calc(0.84 + (var(--focus) * 0.18)));
+  opacity: calc(0.62 + (var(--focus) * 0.38));
+  filter: blur(calc((1 - var(--focus)) * 0.6px));
+
+  transition: none;
+  will-change: transform;
+}
+
+/* Ensure card fills wrapper width */
+.grid.conveyor .conveyor-item > .card{
+  width: 100%;
+  margin: 0;
+}
+
+.grid.conveyor .conveyor-item.is-center{
+  --focus: 1;
 }
 
 /* Hover buttons (only appear when JS adds them) */
