@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume — Yifei Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
@@ -21,7 +23,7 @@
           <a href="about.html">About</a>
           <a href="projects.html">Projects</a>
           <a href="experience.html">Experience</a>
-          <!-- <a class="active" href="gallery.html">Gallery</a> -->
+          <a href="gallery.html">Gallery</a>
           <a class="active" href="resume.html">Resume</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -33,8 +35,8 @@
         <div class="eyebrow">Resume</div>
         <h1>Yifei Chen</h1>
         <p>
-          Email: <a href="mailto:yifeichen388@gmail.com">yifeichen388@gmail.com</a> •
-          <a href="mailto:yic152@ucsd.edu">yic152@ucsd.edu</a>
+          Email: <a href="/cdn-cgi/l/email-protection#2c55454a49454f4449421f14146c4b414d4540024f4341"><span class="__cf_email__" data-cfemail="720b1b14171b111a171c414a4a32151f131b1e5c111d1f">[email&#160;protected]</span></a> •
+          <a href="/cdn-cgi/l/email-protection#0a7363693b3f384a7f69796e246f6e7f"><span class="__cf_email__" data-cfemail="6e17070d5f5b5c2e1b0d1d0a400b0a1b">[email&#160;protected]</span></a>
           <br />
           Tel: <a href="tel:+18583964937">+1 858 396 4937</a> •
           <a href="tel:+8613522838825">+86 135 2283 8825</a>
@@ -52,169 +54,153 @@
 
       <div class="kicker">Text version</div>
 
-      <!-- Education (title outside cards) -->
+      <!-- Education -->
       <div class="kicker">Education</div>
       <section class="grid">
         <div class="card span12">
           <ul class="list">
-            <li>The Branch of the High School Affiliated to Renmin University of China (Sep 2018 – Jul 2021)</li>
+            <li>University of California, San Diego — B.S. Data Science (Sep 2024 – Present)</li>
             <li>The Experimental High School Attached to Beijing Normal University (Sep 2021 – Jul 2024)</li>
-            <li>University of California, San Diego (Sep 2024 – Present)</li>
+            <li>The Branch of the High School Affiliated to Renmin University of China (Sep 2018 – Jul 2021)</li>
           </ul>
         </div>
       </section>
 
-      <!-- Work Experience (title outside cards) -->
+      <!-- Work Experience -->
       <div class="kicker">Work Experience</div>
       <section class="grid">
         <div class="card span6">
           <p><strong>HDSI Lab Fellow</strong>, UC San Diego</p>
+          <p class="muted">Nov 2025 – Present</p>
           <ul class="list">
-            <li>Developed hardware prototypes with Arduino and Raspberry Pi; integrated sensors to support research projects.</li>
-            <li>Designed and fabricated custom components with CAD modeling and 3D printing for device assemblies.</li>
-            <li>Implemented microcontroller programming, circuit setup, and system testing for reliable data capture.</li>
+            <li>Developed embedded hardware prototypes using Arduino and Raspberry Pi integrating sensors for research experiments.</li>
+            <li>Designed and fabricated custom mechanical components using CAD and 3D printing for experimental systems.</li>
+            <li>Implemented microcontroller programming, circuit setup, debugging, and system testing to ensure reliable data capture.</li>
+            <li>Improved system stability through modular hardware design and iterative validation.</li>
           </ul>
         </div>
 
         <div class="card span6">
           <p><strong>Intern</strong>, Zhongdiantongtu Technology., LTD — Wuhan, China</p>
+          <p class="muted">Jan 2023 – Feb 2023</p>
           <ul class="list">
-            <li>Assisted a transportation digital-twin team with data gathering for simulations predicting potential accidents.</li>
-            <li>Conducted a literature review of 10+ related papers.</li>
-            <li>Used “EarthMaker” to simulate tunnel traffic flow, signage, and air circulation.</li>
+            <li>Worked on transportation digital twin systems including data collection and simulation modeling.</li>
+            <li>Used EarthMaker to simulate tunnel traffic flow, signage placement, and air circulation.</li>
+            <li>Conducted literature reviews of 10+ academic papers on digital twins and transportation systems.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Research Experience (title outside cards) -->
+      <!-- Research -->
       <div class="kicker">Research Experience</div>
       <section class="grid">
         <div class="card span12">
           <p><strong>Research on X–Y Plotter</strong> (Advisor: Prof. Michael Littman, Princeton University)</p>
+          <p class="muted">Oct 2022 – Sep 2023</p>
           <ul class="list">
-            <li>Designed and built an x–y plotter; benchmarked commercial and DIY designs (Makeblock, stepper-motor plotters).</li>
-            <li>Modeled in LeoCAD; built with LEGO Technic plus servo/stepper motors; programmed with Arduino IDE.</li>
-            <li>Read 15+ related papers; tested successfully for writing sentences and plotting computer data.</li>
-            <li>Wrote a 15-page paper documenting design decisions, testing, and results.</li>
+            <li>Designed and implemented an x–y plotter system using servo and stepper motors.</li>
+            <li>Modeled using LeoCAD and built prototypes with LEGO Technic components.</li>
+            <li>Programmed motion control using Arduino IDE and successfully plotted data and text.</li>
+            <li>Reviewed 15+ technical references and authored a 15-page research paper.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Project Experience (title outside cards + ONLY section that rolls) -->
+      <!-- Project Experience -->
       <div class="kicker">Project Experience</div>
       <section class="grid resume-roll" data-roll="project-experience">
         <div class="card span6">
-          <p><strong>DS3 Project: Geisel Library Occupancy Tracker</strong></p>
+          <p><strong>Geisel Library Occupancy Tracker (DS3 Project Team Leader)</strong></p>
           <ul class="list">
-            <li>Built a real-time IoT occupancy tracker with ESP32 Bluetooth-scanning sensors and Firebase Realtime Database.</li>
-            <li>Developed a React website that auto-updates via live database listeners; deployed on Vercel.</li>
-            <li>Created realistic, floor-plan-based visualizations to show occupancy by floor and improve interpretability.</li>
-            <li>Collaborated in a four-person team across hardware setup, data structure design, and system integration.</li>
-            <li>Project won second place in Dino Cage.</li>
-          </ul>
-        </div>
-
-        <div class="card span6">
-          <p><strong>Mechanical Subteam Member</strong>, TritonBots RoboCup SSL Team</p>
-          <ul class="list">
-            <li>Designed and prototyped robotic mechanisms (e.g., dribbler damping system).</li>
-            <li>Performed CAD modeling, material selection, and iterative refinement based on testing feedback.</li>
-            <li>Collaborated with electrical and software subteams for integration into full robot assemblies.</li>
+            <li>Led full-stack and hardware development across a team of four.</li>
+            <li>Built ESP32 Bluetooth-scanning hardware with Arduino firmware and sensor configuration.</li>
+            <li>Developed React + Firebase real-time web app deployed on Vercel.</li>
+            <li>Designed real-time visualization and filtering for noisy occupancy data.</li>
+            <li>Won Second Place in Dino Cage competition.</li>
           </ul>
         </div>
 
         <div class="card span6">
           <p><strong>Multimedia Processing and Classification System</strong></p>
           <ul class="list">
-            <li>Built Python image/audio processing framework (filters, edge detection, pixelation, clipping, reverb; audio transforms).</li>
-            <li>Implemented tiered processing classes with cost-tracking and coupon-based systems.</li>
-            <li>Built a KNN classifier with voting, distance metrics, and labeled tests for image classification.</li>
+            <li>Built an end-to-end PyTorch pipeline including Dataset/DataLoader, preprocessing, CNN training, and inference.</li>
+            <li>Implemented both CNN and KNN models for classification tasks.</li>
+            <li>Added batch-based inference and model checkpointing for efficiency and reproducibility.</li>
           </ul>
         </div>
 
         <div class="card span6">
-          <p><strong>Analysis on Music Popularity (TikTok + Spotify)</strong></p>
+          <p><strong>Music Popularity Analysis</strong></p>
           <ul class="list">
-            <li>Cleaned/standardized large datasets and performed EDA + visualization (histograms, bar plots, scatterplots).</li>
-            <li>Developed linear regression model (MSE, R²) and an A/B testing framework to test feature effects.</li>
-            <li>Discussed ethical considerations: dataset bias, algorithm limitations, and transparency.</li>
+            <li>Analyzed TikTok and Spotify datasets with feature engineering and model evaluation.</li>
+            <li>Built neural network regression models using PyTorch.</li>
+            <li>Integrated Gemini API to generate automated analytical reports from model outputs.</li>
           </ul>
         </div>
 
         <div class="card span6">
           <p><strong>Taylor Swift Music Data Analysis</strong></p>
           <ul class="list">
-            <li>Cleaned and analyzed 200+ songs; visualized trends in features and popularity.</li>
-            <li>Built lyric-similarity recommendations + keyword lyric search + a keyword cloud generator (Lover album).</li>
+            <li>Analyzed 200+ songs using text processing and feature extraction techniques.</li>
+            <li>Built recommendation and keyword-based search tools.</li>
           </ul>
         </div>
 
         <div class="card span6">
           <p><strong>Friends TV Show Data Analysis</strong></p>
           <ul class="list">
-            <li>Explored trends in dialogue gender balance, viewership, and emotion via data visualization.</li>
-            <li>Compared directors/writers; computed contributions; identified best directors across episodes.</li>
-            <li>Applied script + sentiment analysis; generated new episode titles using historical patterns.</li>
-            <li>Used statistical analysis to explore correlations between ratings, emotions, and episode success.</li>
+            <li>Performed sentiment and statistical analysis on dialogue and episode-level data.</li>
+            <li>Generated insights on character emotions and viewership trends.</li>
           </ul>
         </div>
 
         <div class="card span6">
-          <p><strong>Team Program Developer</strong>, International Space Settlement Design Competition (ISSDC)</p>
+          <p><strong>International Space Settlement Design Competition</strong></p>
           <ul class="list">
-            <li>Led 3D modeling across Human Factor, Automation, and Operation departments.</li>
-            <li>Coordinated cross-country collaboration on design constraints and subsystem layouts.</li>
-            <li>Presented to ISSDC committee; won International Finals; 3D-printed main model for exhibitions.</li>
-          </ul>
-        </div>
-
-        <div class="card span6">
-          <p><strong>Mechanical Engineer</strong>, VEX Robotics Team</p>
-          <ul class="list">
-            <li>Designed/assembled drivetrain, intake, and lift mechanisms under strict constraints.</li>
-            <li>Used CAD for part optimization; incorporated test feedback to improve performance.</li>
-            <li>Contributed to competition strategy and documentation for reliable builds.</li>
+            <li>Led 3D modeling across multiple departments and coordinated international collaboration.</li>
+            <li>Presented to committee and contributed to International Finals win.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Leadership (title outside cards) -->
+      <!-- Leadership -->
       <div class="kicker">Leadership</div>
       <section class="grid">
         <div class="card span12">
           <p><strong>Founder</strong>, Bibliolater Club — Beijing</p>
           <ul class="list">
-            <li>Built a 40+ member reading club across multiple Beijing schools.</li>
-            <li>Organized 120+ online meetings; read/discussed 40 books; facilitated idea-sharing and discussion.</li>
+            <li>Founded and led a 40+ member reading club across multiple schools.</li>
+            <li>Organized 120+ meetings and facilitated discussions across 40 books.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Additional Skills (title outside cards) -->
-      <div class="kicker">Additional Skills</div>
+      <!-- Skills -->
+      <div class="kicker">Skills</div>
       <section class="grid">
         <div class="card span12">
           <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Java</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">React</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">CAD</span>
+            <span class="tag">SolidWorks</span>
+            <span class="tag">Blender</span>
+            <span class="tag">Git</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Soldering</span>
+            <span class="tag">Laser Cutting</span>
+            <span class="tag">Carpentry</span>
             <span class="tag">Mandarin</span>
             <span class="tag">English</span>
             <span class="tag">Spanish</span>
-            <span class="tag">Python</span>
-            <span class="tag">Java</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Arduino</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">SolidWorks</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Blender</span>
-            <span class="tag">3D Printing</span>
-            <span class="tag">Carpentry</span>
-            <span class="tag">Soldering</span>
-            <span class="tag">MS Office</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="footer">© <span id="year"></span> Yifei Chen</div>
-    </main>
-  </body>
-</html>

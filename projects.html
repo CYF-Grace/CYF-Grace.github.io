@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Projects — Yifei Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
@@ -21,7 +23,7 @@
           <a href="about.html">About</a>
           <a class="active" href="projects.html">Projects</a>
           <a href="experience.html">Experience</a>
-          <!-- <a class="active" href="gallery.html">Gallery</a> -->
+          <a href="gallery.html">Gallery</a>
           <a href="resume.html">Resume</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -33,7 +35,7 @@
         <div class="eyebrow">Selected work</div>
         <h1>Projects</h1>
         <p>
-          Projects prioritized around data workflows and data-driven applications, with additional hands-on engineering work.
+          Selected projects across machine learning, embedded systems, full-stack development, and data-driven analysis.
         </p>
       </section>
 
@@ -41,95 +43,102 @@
 
       <section class="grid">
         <div class="card span6">
-          <h2>Analysis on Music Popularity (TikTok + Spotify)</h2>
+          <h2>Geisel Library Occupancy Tracker (DS3)</h2>
           <ul class="list">
-            <li>Cleaned and standardized large datasets; performed EDA and visualization.</li>
-            <li>Built and evaluated a linear regression model (MSE, R²).</li>
-            <li>Constructed an A/B testing framework; discussed ethics (bias/limitations/transparency).</li>
+            <li>Led the project lifecycle across hardware, data infrastructure, and frontend deployment as team lead.</li>
+            <li>Built an ESP32-based Bluetooth scanning system with Arduino firmware, sensor configuration, and debugging.</li>
+            <li>Developed a React + Firebase Realtime Database web app for real-time occupancy visualization and deployment on Vercel.</li>
+            <li>Designed floor-plan-based visualizations and filtering logic to improve interpretability of noisy occupancy data.</li>
+            <li>Won Second Place Project in Dino Cage (DS3 Project Competition).</li>
           </ul>
           <div class="tags">
+            <span class="tag">ESP32</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">React</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Real-time Systems</span>
+          </div>
+        </div>
+
+        <div class="card span6">
+          <h2>Multimedia Processing and Classification System</h2>
+          <ul class="list">
+            <li>Designed an object-oriented multimedia processing system supporting image transformations and audio effects.</li>
+            <li>Implemented an end-to-end image classification pipeline in PyTorch with custom Dataset/DataLoader, preprocessing, CNN training, and batch inference.</li>
+            <li>Built and evaluated both a CNN model and a K-Nearest Neighbors baseline for multimedia classification tasks.</li>
+            <li>Added model checkpointing and batch-based inference for reproducible evaluation and efficiency.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">CNN</span>
+            <span class="tag">KNN</span>
+            <span class="tag">Batch Inference</span>
             <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">EDA</span>
+          </div>
+        </div>
+
+        <div class="card span6">
+          <h2>Music Popularity Analysis</h2>
+          <ul class="list">
+            <li>Analyzed large-scale TikTok and Spotify datasets to study factors influencing song popularity.</li>
+            <li>Performed data cleaning, feature engineering, standardization, and model evaluation using Python, Pandas, and NumPy.</li>
+            <li>Built PyTorch-based neural network regression models to predict track popularity from audio features and artist metrics.</li>
+            <li>Integrated the Gemini API to generate automated analytical reports from model outputs, correlations, and prediction errors.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
             <span class="tag">Regression</span>
-            <span class="tag">A/B testing</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">LLM API</span>
           </div>
         </div>
 
         <div class="card span6">
           <h2>Taylor Swift Music Data Analysis</h2>
           <ul class="list">
-            <li>Cleaned and analyzed lyrics dataset (200+ songs).</li>
-            <li>Built a lyric similarity recommender and keyword search tool.</li>
-            <li>Visualized trends and generated keyword clouds.</li>
+            <li>Analyzed lyrics from 200+ songs to identify thematic and popularity trends.</li>
+            <li>Built a lyric-based song recommendation tool using similarity metrics and keyword search.</li>
+            <li>Created data visualizations and keyword clouds for album-level analysis.</li>
+            <li>Explored how unstructured text features can be turned into interpretable patterns.</li>
           </ul>
           <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Recommender</span>
+            <span class="tag">Text Analysis</span>
+            <span class="tag">Feature Extraction</span>
             <span class="tag">Visualization</span>
+            <span class="tag">Python</span>
           </div>
         </div>
 
         <div class="card span6">
           <h2>Friends TV Show Data Analysis</h2>
           <ul class="list">
-            <li>Visualized gender balance, viewership, and character emotion trends.</li>
-            <li>Compared directors/writers; ran sentiment analysis.</li>
-            <li>Explored correlations between ratings and emotion signals.</li>
+            <li>Analyzed episode-level datasets to study dialogue gender balance, character emotions, and viewership trends.</li>
+            <li>Performed sentiment analysis and statistical correlation analysis on structured and natural-language data.</li>
+            <li>Generated emotion distributions and algorithmically created new episode titles.</li>
+            <li>Used preprocessing pipelines and aggregation strategies to manage noisy text-heavy datasets.</li>
           </ul>
           <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Sentiment</span>
+            <span class="tag">Sentiment Analysis</span>
             <span class="tag">Statistics</span>
-            <span class="tag">Visualization</span>
-          </div>
-        </div>
-
-        <div class="card span6">
-          <h2>Multimedia Processing & Classification System</h2>
-          <ul class="list">
-            <li>Built an image + audio processing framework in Python with tiered classes.</li>
-            <li>Implemented cost tracking, coupon-based service simulation, and logging.</li>
-            <li>Created a KNN classifier using labeled data, voting, and distance metrics.</li>
-          </ul>
-          <div class="tags">
+            <span class="tag">Data Processing</span>
             <span class="tag">Python</span>
-            <span class="tag">Image processing</span>
-            <span class="tag">Audio processing</span>
-            <span class="tag">KNN</span>
           </div>
         </div>
 
         <div class="card span6">
-          <h2>Geisel Library Occupancy Tracker (DS3)</h2>
+          <h2>International Space Settlement Design Competition</h2>
           <ul class="list">
-            <li>Built a real-time occupancy tracking pipeline using ESP32 Bluetooth scanning sensors and Firebase RTDB.</li>
-            <li>Created a React website that auto-updates via live listeners; deployed on Vercel.</li>
-            <li>Implemented a realistic floor visualization for interpreting usage patterns.</li>
+            <li>Led 3D modeling work across multiple departments including Human Factor, Automation, and Operation.</li>
+            <li>Coordinated design communication across international teams working on engineering and infrastructure systems.</li>
+            <li>Presented the project to the ISSDC committee and contributed to the team’s International Finals win.</li>
+            <li>Helped prepare and present the 3D printed model at the 2023 UNESCO Prize for Girls’ and Women’s Education award ceremony.</li>
           </ul>
           <div class="tags">
-            <span class="tag">ESP32</span>
-            <span class="tag">Bluetooth scanning</span>
-            <span class="tag">Firebase RTDB</span>
-            <span class="tag">React</span>
-            <span class="tag">Vercel</span>
-          </div>
-        </div>
-
-        <div class="card span6">
-          <h2>ISSDC Team Program Developer (International Finals Winner)</h2>
-          <ul class="list">
-            <li>Led 3D modeling across multiple departments and coordinated design constraints across teams.</li>
-            <li>Presented to committee and won International Finals; 3D printed main model for presentation.</li>
-            <li>Presented at the 2023 UNESCO Prize for Girls’ and Women’s Education event.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">3D modeling</span>
-            <span class="tag">Collaboration</span>
+            <span class="tag">3D Modeling</span>
+            <span class="tag">Mechanical Design</span>
+            <span class="tag">Cross-Team Collaboration</span>
             <span class="tag">Presentation</span>
-            <span class="tag">Prototyping</span>
           </div>
         </div>
       </section>
