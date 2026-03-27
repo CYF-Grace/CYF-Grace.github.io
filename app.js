@@ -387,6 +387,7 @@
 
       container.setPointerCapture(e.pointerId);
       m.dragActive  = true;
+      m.dragMoved   = false;
       m.snapActive  = false;
       m.paused      = true;
       m.momentum    = 0;
@@ -406,6 +407,9 @@
       const now  = performance.now();
       const dt   = now - m.lastDragT;
 
+      // Only count as a real drag after moving more than 6px
+      if (Math.abs(dx) > 6) m.dragMoved = true;
+
       // Track velocity for momentum (px/ms → px/s)
       if (dt > 0) {
         m.momentum = ((e.clientX - m.lastDragX) / dt) * 1000 * -1; // negative = drag right moves left
@@ -423,6 +427,25 @@
       if (!m || !m.dragActive) return;
       m.dragActive = false;
       container.style.cursor = "";
+
+      // If the pointer barely moved, treat it as a click — follow any link under the pointer
+      if (!m.dragMoved) {
+        // setPointerCapture makes e.target always the container, so use elementFromPoint
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const link = el && el.closest("a[href]");
+        if (link) {
+          const href = link.getAttribute("href");
+          if (link.target === "_blank" || link.rel?.includes("noopener")) {
+            window.open(href, "_blank", "noopener");
+          } else {
+            window.location.href = href;
+          }
+        }
+        // Resume scroll and bail out — no snap needed
+        m.paused = false;
+        container.classList.remove("paused");
+        return;
+      }
 
       // Apply momentum: hand off to ticker by setting a flick velocity
       // The ticker will decay it and then snap if needed.

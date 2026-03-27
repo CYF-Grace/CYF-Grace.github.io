@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F-35 Fighter Jet 3D Model — Yifei Chen</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>Yifei Chen</strong><span>Portfolio</span>
+          </div>
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="experience.html">Experience</a>
+          <a href="gallery.html" class="active">Gallery</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">3D Model Showcase</div>
+        <h1>F-35 Fighter Jet 3D Model</h1>
+        <p>
+          A stylized aircraft modeling project focused on form, contour, and translating complex real-world geometry into a clean digital build.
+        </p>
+        <div class="actions">
+          <a class="btn" href="gallery.html">← Back to Gallery</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card span12">
+          <model-viewer
+            class="model3d-full"
+            src="assets/models/f35-model.glb"
+            alt="3D model of an F-35 fighter jet"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            exposure="1.1"
+            camera-orbit="45deg 75deg 6m"
+            field-of-view="30deg">
+          </model-viewer>
+        </div>
+
+        <div class="card span12">
+          <h2>About this model</h2>
+          <p>
+            This model was created as a 3D aircraft design study, with attention to overall silhouette, surface transitions, and the balance between recognizable form and simplified digital styling.
+          </p>
+          <p>
+            The project helped strengthen my understanding of aircraft geometry, clean modeling workflows, and visual presentation in 3D design.
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">© <span id="year"></span> Yifei Chen</div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
