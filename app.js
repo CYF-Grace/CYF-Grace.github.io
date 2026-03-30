@@ -209,7 +209,7 @@
     if (!container || prefersReduced) return;
     if (container.dataset.conveyorReady === "1") return;
 
-    const { durationSec = 32, gap = 10, withButtons = false } = opts;
+    const { pxPerSec = 26, gap = 10, withButtons = false } = opts;
     const items = Array.from(container.querySelectorAll(itemSelector));
     if (items.length < 2) return;
 
@@ -273,7 +273,7 @@
     let loop = 0;
     const rebuild = () => {
       loop = buildLoop() || loop || 600;
-      const speed = loop / durationSec;
+      const speed = pxPerSec;
       const existing = marqueeList.find((m) => m.container === container);
       if (existing) {
         existing.loop = loop;
@@ -610,17 +610,18 @@
   };
 
   // ── Apply conveyors ──
-  const SPEED = 34;
+  const TAG_SPEED = 22;
+  const CARD_SPEED = 34;
 
   document.querySelectorAll(".tags").forEach((el) =>
-    setupConveyor(el, ".tag", { durationSec: SPEED, gap: 8, withButtons: false })
+    setupConveyor(el, ".tag", { pxPerSec: TAG_SPEED, gap: 8, withButtons: false })
   );
 
   const path = (location.pathname || "").toLowerCase();
   if (path.endsWith("projects.html") || path.endsWith("gallery.html") || path.endsWith("resume.html")) {
     document.querySelectorAll(".grid").forEach((grid) => {
       if (grid.querySelectorAll(".card").length <= 2) return;
-      setupConveyor(grid, ".card", { durationSec: SPEED, gap: 16, withButtons: true });
+      setupConveyor(grid, ".card", { pxPerSec: CARD_SPEED, gap: 16, withButtons: true });
     });
   }
 
